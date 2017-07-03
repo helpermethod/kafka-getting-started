@@ -8,16 +8,16 @@ import static java.util.stream.IntStream.range;
 
 @Component
 public class Producer implements CommandLineRunner {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<Integer, Integer> kafkaTemplate;
 
-    public Producer(KafkaTemplate<String, String> kafkaTemplate) {
+    public Producer(KafkaTemplate<Integer, Integer> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
     public void run(String... args) throws Exception {
         range(0, 100)
-            .mapToObj(String::valueOf)
-            .forEach(s -> kafkaTemplate.send("test", s));
+            .boxed()
+            .forEach(i -> kafkaTemplate.send("test", i, i));
     }
 }
