@@ -24,7 +24,7 @@ public class Consumer {
 		properties.setProperty(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		properties.setProperty(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		properties.setProperty(VALUE_DESERIALIZER_CLASS_CONFIG, IntegerDeserializer.class.getName());
-		properties.setProperty(GROUP_ID_CONFIG, "test");
+		properties.setProperty(GROUP_ID_CONFIG, "workshop");
 
 		return properties;
 	}
